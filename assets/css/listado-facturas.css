@@ -1,0 +1,27 @@
+#dataTables-example_filter{
+  float:right !important;
+}
+.pay-fact-ico, .delete-fact-ico, .edit-fact-ico{
+  font-size:23px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+.pay-fact-ico{
+  color:#27ae60;
+  cursor: pointer;
+}
+
+.delete-fact-ico{
+  color:#c0392b;
+  cursor: pointer;
+}
+
+.edit-fact-ico{
+  color:#34495e;
+  cursor: pointer;
+}
+
+.td-fact-ico{
+  text-align: center;
+}
