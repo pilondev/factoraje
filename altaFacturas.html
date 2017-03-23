@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sistema de Factoraje</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../assets/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../assets/css/cargarFactura.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../assets/css/listaFacturas.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="main.html">Sistema de Factoraje</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="index.html"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesion</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="main.html"><i class="fa fa-dashboard fa-fw"></i> Principal</a>
+                        </li>
+                        <li>
+                            <a href="facturas.html" class="active"><i class="fa fa-paperclip"></i> Facturas<!--<span class="fa arrow"></span>--></a>
+                            <!--<ul class="nav nav-second-level">
+                                <li>
+                                    <a href="flot.html">Flot Charts</a>
+                                </li>
+                                <li>
+                                    <a href="morris.html">Morris.js Charts</a>
+                                </li>
+                            </ul>-->
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Cargar Factura</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Alta de Factura
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><strong>Subir Factura</strong></div>
+                                <div class="panel-body">
+
+                                  <!-- Standar Form -->
+                                  <h4>Selecciona la factura que deseas cargar</h4>
+                                  <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+                                    <div class="form-inline">
+                                      <div class="form-group">
+                                        <input class="input-file" type="file" name="files[]" id="js-upload-files" multiple>
+                                      </div>
+                                      <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+                                    </div>
+                                  </form>
+
+                                  <!-- Drop Zone -->
+                                  <h4>Arrastra la imagen aqui.</h4>
+                                  <div class="upload-drop-zone" id="drop-zone">
+                                    Arrastra la imagen aqui
+                                  </div>
+
+                                  <!-- Progress Bar -->
+                                  <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+                                      <span class="sr-only">80% Complete</span>
+                                    </div>
+                                  </div>
+
+                                  <!-- Upload Finished -->
+                                  <div class="js-upload-finished">
+                                    <h3>Imagenes subidas</h3>
+                                    <div class="list-group">
+                                      <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
+                                      <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+     <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="../assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../assets/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../assets/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+    <script src="../assets/js/cargarFactura.js"></script>
+
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
+
+</body>
+
+</html>
