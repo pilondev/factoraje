@@ -12,16 +12,58 @@
 
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-   <link rel="stylesheet" href="provedores/assets/css/login.css">
+   <link rel="stylesheet" href="index.css">
 
    <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
 
    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-
-
 </head>
 <body>
+
+<div class="modal fade" id="registrate-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Registrate</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="col-md-4 div-registrate-img">
+              <a href="">
+                <div class="morph pic">
+                  <img src = "client.png" class = "img-circle">
+                </div>
+              </a>
+              <div class="div-img-title-registrate"><h5>Cliente</h5></div>
+          </div>
+          <div class="col-md-4 div-registrate-img">
+            <a href="">
+              <div class="morph pic">
+                <img src = "inversionist.png" class = "img-circle">
+              </div>
+            </a>
+              <div class="div-img-title-registrate"><h5>Inversionista</h5></div>
+          </div>
+          <div class="col-md-4 div-registrate-img">
+            <a href="proveedores/proveedores-form.html">
+              <div class="morph pic">
+                <img src = "provider.png" class = "img-circle">
+              </div>
+            </a>
+            <div class="div-img-title-registrate"><h5>Proveedor</h5></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!--
     you can substitue the span of reauth email for a input with the email and
@@ -41,16 +83,14 @@
                 <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
                 <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
                 <p id="profile-name" class="profile-name-card"></p>
-                <form class="form-signin" action="provedores/main.html">
+                <form class="form-signin">
                     <span id="reauth-email" class="reauth-email"></span>
                     <input type="text" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus>
                     <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
-                    <!--<div id="remember" class="checkbox">
-                        <label>
-                            <input type="checkbox" value="remember-me"> Remember me
-                        </label>
-                    </div>-->
-                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Ingresar</button>
+                    <div class="div-registrate">
+                        <a href="#" id="registrate" class="registrate"> Registrate </a>
+                    </div><br>
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" id="btn-loggear" type="button">Ingresar</button>
                 </form><!-- /form -->
             </div><!-- /card-container -->
           </div>
@@ -68,5 +108,32 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function(){
+
+    $("#registrate").click(function(){
+      $("#registrate-modal").modal("show");
+    });
+
+    $("#btn-loggear").click(function(){
+        var id = $("#inputEmail").val();
+        var password = $("#inputPassword").val();
+
+        if(id == "p" && password == "p"){
+          window.location.href = "proveedores/main.html";
+        }
+        else if(id == "c" && password == "c"){
+          window.location.href = "clientes/main.html";
+        }
+        else if(id == "i" && password == "i"){
+          window.location.href = "inversionistas/main.html";
+        }
+        else{
+          alert("Contraseña o Usuario incorrecto favor de checar de nuevo");
+        }
+    });
+
+  });
+</script>
 </body>
 </html>

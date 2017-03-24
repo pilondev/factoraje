@@ -1,9 +1,4 @@
-/*
- * Specific styles of signin component
- */
-/*
- * General styles
- */
+
 body, html {
     height: 100%;
     background-repeat: no-repeat;
@@ -154,3 +149,42 @@ body, html {
     font-family: 'Exo 2', sans-serif;
     color:white;
 }
+
+.modal-footer{
+    margin-top: 30%!important;
+    padding:10px!important;
+}
+
+@media screen and (max-width: 982px) {
+    .modal-footer {
+        margin-top: 20px!important;
+    }
+}
+.div-registrate{
+    text-align: center;
+}
+
+.registrate{
+    font-size: 15px;
+}
+
+.div-registrate-img, .div-img-title-registrate{
+    text-align: center;
+}
+.morph{
+   -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+
+.morph:hover {
+     -webkit-transform: rotate(-10deg);
+     -moz-transform: rotate(-10deg);
+       -o-transform: rotate(-10deg);
+      -ms-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+}
+
+
