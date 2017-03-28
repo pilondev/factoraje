@@ -17,10 +17,13 @@
     <!-- Custom CSS -->
     <link href="assets/dist/css/sb-admin-2.css" rel="stylesheet">
 
+    <!--Date Picker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <!-- Custom Fonts -->
     <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link href="assets/css/listado-facturas.css" rel="stylesheet">
+    <link href="assets/css/lista-facturas.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -93,19 +96,64 @@
             <!-- /.navbar-static-side -->
         </nav>
 
+
+        <!-- Modal For Edit -->
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="edit-modal">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Factura</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="control-label"> Ceder Porcentaje:</label>
+                        <div>
+                            <div class="input-group">
+                               <input  name="ceder-porcentaje" id="ceder-porcentaje" maxlength="2"  type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57'><span>%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Fecha del Pago:</label>
+                        <div>
+                            <div class="input-group">
+                               <input id="datepicker" type="text" name="datepicker">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-success fade in" id="actualizacion-factura-exitosa">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Excelente!</strong> Se actualizo tu factura correctamente.
+                    </div>
+                 </div>
+                 <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="editar-factura">Actualizar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Modal For Delete -->
         <div class="modal fade bd-example-modal-sm" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-sm">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Eliminar Factura</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title">Eliminar Factura</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                   </div>
                   <div class="modal-body">
                     <p>Estas seguro que deseas eliminar la factura selccionada ?</p>
                  </div>
+                 <div class="alert alert-danger fade in" id="eliminar-factura-exitosa">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Eliminada!</strong> Tu factura se elimino correctamente.
+                </div>
                  <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="eliminar-factura">Eliminar</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -134,22 +182,24 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
+                                        <th>*</th>
                                         <th>Factura</th>
                                         <th>Alta de la Factura</th>
                                         <th>Cliente</th>
                                         <th>Porcentaje</th>
-                                        <th>Fecha de Pago</th>
+                                        <th>Fecha de Pago -  Mes/Dia/Año</th>
                                         <th>Total</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="odd gradeX">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image003.png</a></td>
-                                        <td>19/03/1991</td>
+                                        <td>03/19/1990</td>
                                         <td>Javier Mina</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">10</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -158,11 +208,12 @@
                                         </td>
                                     </tr>
                                     <tr class="even gradeC">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image004.png</a></td>
-                                        <td>19/04/1991</td>
+                                        <td >19/04/1991</td>
                                         <td>Carlos Jimenez</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">5</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -171,11 +222,12 @@
                                         </td>
                                     </tr>
                                     <tr class="odd gradeA">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image005.png</a></td>
                                         <td>19/05/1991</td>
                                         <td>Autopartes Carlo</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">4</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -184,11 +236,12 @@
                                         </td>
                                     </tr>
                                     <tr class="even gradeA">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image006.png</a></td>
                                         <td>19/04/1991</td>
                                         <td>Audiomatico Telcel</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">20</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -199,11 +252,12 @@
 
 
                                     <tr class="gradeA">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image007.png</a></td>
                                         <td>19/04/1991</td>
                                         <td>Banamex Cliente</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">50</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -212,11 +266,12 @@
                                         </td>
                                     </tr>
                                     <tr class="odd gradeX">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image003.png</a></td>
-                                        <td>19/03/1991</td>
+                                        <td>03/19/1990</td>
                                         <td>Javier Mina</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">10</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -225,11 +280,12 @@
                                         </td>
                                     </tr>
                                     <tr class="even gradeC">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image004.png</a></td>
                                         <td>19/04/1991</td>
                                         <td>Carlos Jimenez</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">5</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -238,11 +294,12 @@
                                         </td>
                                     </tr>
                                     <tr class="odd gradeA">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image005.png</a></td>
                                         <td>19/05/1991</td>
                                         <td>Autopartes Carlo</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">4</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -251,11 +308,12 @@
                                         </td>
                                     </tr>
                                     <tr class="even gradeA">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image006.png</a></td>
                                         <td>19/04/1991</td>
                                         <td>Audiomatico Telcel</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">20</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -266,11 +324,12 @@
 
 
                                     <tr class="gradeA">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image007.png</a></td>
                                         <td>19/04/1991</td>
                                         <td>Banamex Cliente</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">50</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -279,11 +338,12 @@
                                         </td>
                                     </tr>
                                     <tr class="odd gradeX">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image003.png</a></td>
-                                        <td>19/03/1991</td>
+                                        <td>03/19/1990</td>
                                         <td>Javier Mina</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">10</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -292,11 +352,12 @@
                                         </td>
                                     </tr>
                                     <tr class="even gradeC">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image004.png</a></td>
                                         <td>19/04/1991</td>
                                         <td>Carlos Jimenez</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">5</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -305,24 +366,12 @@
                                         </td>
                                     </tr>
                                     <tr class="odd gradeA">
+                                        <td><input type="checkbox" class="style1"/></td>
                                         <td><a href="#">image005.png</a></td>
                                         <td>19/05/1991</td>
                                         <td>Autopartes Carlo</td>
                                         <td class="td-porcentaje-fact"><span class="porcentaje-editable">4</span>%</td>
-                                        <td>19/03/1991</td>
-                                        <td>$100</td>
-                                        <td class="center td-fact-ico">
-                                            <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
-                                            <i class="fa fa-pencil-square-o edit-fact-ico" title="Editar Factura" aria-hidden="true"></i>
-                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-                                    <tr class="even gradeA">
-                                        <td><a href="#">image006.png</a></td>
-                                        <td>19/04/1991</td>
-                                        <td>Audiomatico Telcel</td>
-                                        <td class="td-porcentaje-fact"><span class="porcentaje-editable">20</span>%</td>
-                                        <td>19/03/1991</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td>$100</td>
                                         <td class="center td-fact-ico">
                                             <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
@@ -331,159 +380,14 @@
                                         </td>
                                     </tr>
 
-
-                                    <tr class="gradeA">
-                                        <td><a href="#">image007.png</a></td>
-                                        <td>19/04/1991</td>
-                                        <td>Banamex Cliente</td>
-                                        <td class="td-porcentaje-fact"><span class="porcentaje-editable">50</span>%</td>
-                                        <td>19/03/1991</td>
-                                        <td>$100</td>
-                                        <td class="center td-fact-ico">
-                                            <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
-                                            <i class="fa fa-pencil-square-o edit-fact-ico" title="Editar Factura" aria-hidden="true"></i>
-                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td><a href="#">image003.png</a></td>
-                                        <td>19/03/1991</td>
-                                        <td>Javier Mina</td>
-                                        <td class="td-porcentaje-fact"><span class="porcentaje-editable">10</span>%</td>
-                                        <td>19/03/1991</td>
-                                        <td>$100</td>
-                                        <td class="center td-fact-ico">
-                                            <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
-                                            <i class="fa fa-pencil-square-o edit-fact-ico" title="Editar Factura" aria-hidden="true"></i>
-                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-                                    <tr class="even gradeC">
-                                        <td><a href="#">image004.png</a></td>
-                                        <td>19/04/1991</td>
-                                        <td>Carlos Jimenez</td>
-                                        <td class="td-porcentaje-fact"><span class="porcentaje-editable">5</span>%</td>
-                                        <td>19/03/1991</td>
-                                        <td>$100</td>
-                                        <td class="center td-fact-ico">
-                                            <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
-                                            <i class="fa fa-pencil-square-o edit-fact-ico" title="Editar Factura" aria-hidden="true"></i>
-                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td><a href="#">image005.png</a></td>
-                                        <td>19/05/1991</td>
-                                        <td>Autopartes Carlo</td>
-                                        <td class="td-porcentaje-fact"><span class="porcentaje-editable">4</span>%</td>
-                                        <td>19/03/1991</td>
-                                        <td>$100</td>
-                                        <td class="center td-fact-ico">
-                                            <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
-                                            <i class="fa fa-pencil-square-o edit-fact-ico" title="Editar Factura" aria-hidden="true"></i>
-                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-                                    <tr class="even gradeA">
-                                        <td><a href="#">image006.png</a></td>
-                                        <td>19/04/1991</td>
-                                        <td>Audiomatico Telcel</td>
-                                        <td class="td-porcentaje-fact"><span class="porcentaje-editable">20</span>%</td>
-                                        <td>19/03/1991</td>
-                                        <td>$100</td>
-                                        <td class="center td-fact-ico">
-                                            <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
-                                            <i class="fa fa-pencil-square-o edit-fact-ico" title="Editar Factura" aria-hidden="true"></i>
-                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-
-
-                                    <tr class="gradeA">
-                                        <td><a href="#">image007.png</a></td>
-                                        <td>19/04/1991</td>
-                                        <td>Banamex Cliente</td>
-                                        <td class="td-porcentaje-fact"><span class="porcentaje-editable">50</span>%</td>
-                                        <td>19/03/1991</td>
-                                        <td>$100</td>
-                                        <td class="center td-fact-ico">
-                                            <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
-                                            <i class="fa fa-pencil-square-o edit-fact-ico" title="Editar Factura" aria-hidden="true"></i>
-                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td><a href="#">image003.png</a></td>
-                                        <td>19/03/1991</td>
-                                        <td>Javier Mina</td>
-                                        <td class="td-porcentaje-fact"><span class="porcentaje-editable">10</span>%</td>
-                                        <td>19/03/1991</td>
-                                        <td>$100</td>
-                                        <td class="center td-fact-ico">
-                                            <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
-                                            <i class="fa fa-pencil-square-o edit-fact-ico" title="Editar Factura" aria-hidden="true"></i>
-                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-                                    <tr class="even gradeC">
-                                        <td><a href="#">image004.png</a></td>
-                                        <td>19/04/1991</td>
-                                        <td>Carlos Jimenez</td>
-                                        <td class="td-porcentaje-fact"><span class="porcentaje-editable">5</span>%</td>
-                                        <td>19/03/1991</td>
-                                        <td>$100</td>
-                                        <td class="center td-fact-ico">
-                                            <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
-                                            <i class="fa fa-pencil-square-o edit-fact-ico" title="Editar Factura" aria-hidden="true"></i>
-                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td><a href="#">image005.png</a></td>
-                                        <td>19/05/1991</td>
-                                        <td>Autopartes Carlo</td>
-                                        <td class="td-porcentaje-fact"><span class="porcentaje-editable">4</span>%</td>
-                                        <td>19/03/1991</td>
-                                        <td>$100</td>
-                                        <td class="center td-fact-ico">
-                                            <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
-                                            <i class="fa fa-pencil-square-o edit-fact-ico" title="Editar Factura" aria-hidden="true"></i>
-                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-                                    <tr class="even gradeA">
-                                        <td><a href="#">image006.png</a></td>
-                                        <td>19/04/1991</td>
-                                        <td>Audiomatico Telcel</td>
-                                        <td class="td-porcentaje-fact"><span class="porcentaje-editable">20</span>%</td>
-                                        <td>19/03/1991</td>
-                                        <td>$100</td>
-                                        <td class="center td-fact-ico">
-                                            <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
-                                            <i class="fa fa-pencil-square-o edit-fact-ico" title="Editar Factura" aria-hidden="true"></i>
-                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-
-
-                                    <tr class="gradeA">
-                                        <td><a href="#">image007.png</a></td>
-                                        <td>19/04/1991</td>
-                                        <td>Banamex Cliente</td>
-                                        <td class="td-porcentaje-fact"><span class="porcentaje-editable">50</span>%</td>
-                                        <td>19/03/1991</td>
-                                        <td>$100</td>
-                                        <td class="center td-fact-ico">
-                                            <i class="fa fa-check-square pay-fact-ico" title="Pagar factura" aria-hidden="true"></i>
-                                            <i class="fa fa-pencil-square-o edit-fact-ico" title="Editar Factura" aria-hidden="true"></i>
-                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->
+                        <div class="footer-btn">
+                            <button class="btn btn-primary">Cargar Facturas</button>
+                        </div>
                     </div>
                     <!-- /.panel -->
                 </div>
@@ -503,6 +407,10 @@
     <!-- jQuery -->
     <script src="assets/vendor/jquery/jquery.min.js"></script>
 
+    <!--Date Picker -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -511,6 +419,12 @@
     <script src="assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="assets/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
     <script src="assets/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+    <script>
+      $( function() {
+        $( "#datepicker" ).datepicker();
+      } );
+  </script>
 
 </body>
 

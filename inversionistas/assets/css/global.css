@@ -1,0 +1,28 @@
+body{
+  background-color: black!important;
+}
+#wrapper {
+  background:black!important;
+}
+.sidebar ul li a.active {
+    background-color: grey!important;
+}
+.sidebar ul li {
+  border:none!important;
+}
+#side-menu li:hover{
+  background:red!important;
+}
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color:white!important;
+}
+.nav>li>a:hover {
+    background:grey!Important;
+}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background:grey!important;
+    border-color: none!important;
+}

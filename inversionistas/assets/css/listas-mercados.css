@@ -1,0 +1,30 @@
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+.footer-btn{
+  padding:20px;
+  margin-top: -5%;
+  cursor:pointer;
+}
+.footer-btn > button{
+  width: 150px;
+  height: 40px;
+}
+#dataTables-example_filter{
+  float:right !important;
+}
+.detalle-comprador{
+  float:right;
+}
+
+.index-status{
+  padding-bottom: 20px;
+}
+
+.index-status div{
+  padding:10px;
+}

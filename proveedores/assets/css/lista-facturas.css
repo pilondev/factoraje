@@ -25,3 +25,18 @@
 .td-fact-ico{
   text-align: center;
 }
+
+#actualizacion-factura-exitosa, #eliminar-factura-exitosa{
+  display:none;
+}
+
+.footer-btn{
+  padding:20px;
+  margin-top: -5%;
+  cursor:pointer;
+}
+
+.footer-btn > button{
+  width: 150px;
+  height: 40px;
+}
