@@ -69,18 +69,6 @@
                         <li>
                             <a href="main.html"><i class="fa fa-dashboard fa-fw"></i> Principal</a>
                         </li>
-                        <li>
-                            <a href="facturas.html" class="active"><i class="fa fa-paperclip"></i> Facturas<!--<span class="fa arrow"></span>--></a>
-                            <!--<ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>-->
-                            <!-- /.nav-second-level -->
-                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -115,10 +103,10 @@
                                   <h4>Selecciona la factura que deseas cargar</h4>
                                   <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
                                     <div class="form-inline">
-                                      <div class="form-group">
-                                        <input class="input-file" type="file" name="files[]" id="js-upload-files" multiple>
-                                      </div>
-                                      <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Subir Archivos</button>
+                                        <label class="btn btn-success btn-file">
+                                            Seleccionar Archivo <input type="file" style="display: none;" name="files[]" id="js-upload-files" multiple>
+                                        </label>
+                                        <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Subir Archivos</button>
                                     </div>
                                   </form>
 

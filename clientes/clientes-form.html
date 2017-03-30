@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sistema de Factoraje</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+    #success_message{ display: none;}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<form class="well form-horizontal" action=" " method="post"  id="contact_form">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Formulario de Registro Clientes</legend>
+
+<!-- Text input-->
+
+<div class="form-group">
+    <label class="col-md-4 control-label"> Nombre</label>
+    <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  name="first_name" placeholder="Nombre" class="form-control"  type="text">
+        </div>
+    </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+    <label class="col-md-4 control-label" >Apellido Paterno</label>
+    <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="apellidoPaterno" placeholder="Apellido Paterno" class="form-control"  type="text">
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-4 control-label" >Apellido Materno</label>
+    <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="apellidoMaterno" placeholder="Apellido Materno" class="form-control"  type="text">
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-4 control-label" >RFC</label>
+    <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="rfc" placeholder="RFC" class="form-control"  type="text">
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-4 control-label" >Nombre de la compañia</label>
+    <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="nombreCompania" placeholder="Nombre de la compañia" class="form-control"  type="text">
+        </div>
+    </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+    <label class="col-md-4 control-label">Correo</label>
+    <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input name="correo" placeholder="Correo" class="form-control"  type="text">
+        </div>
+    </div>
+</div>
+
+
+<!-- Text input-->
+
+<div class="form-group">
+    <label class="col-md-4 control-label">Telefono o Celular #</label>
+    <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+            <input name="telefono" placeholder="(33) 23344554" class="form-control" type="text">
+        </div>
+    </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+    <label class="col-md-4 control-label">Direccion</label>
+    <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <input name="direccion" placeholder="Direccion" class="form-control" type="text">
+        </div>
+    </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+    <label class="col-md-4 control-label">Ciudad</label>
+    <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <input name="ciudad" placeholder="Ciudad" class="form-control"  type="text">
+        </div>
+    </div>
+</div>
+
+<!-- Select Basic -->
+
+<div class="form-group">
+    <label class="col-md-4 control-label">Estado</label>
+    <div class="col-md-4 selectContainer">
+        <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+            <select name="state" class="form-control selectpicker" >
+            <option value=" " >Selecciona tu estado</option>
+            <option>Chihuahua</option>
+            <option>Monterrey</option>
+            <option >Guadalajara</option>
+            <option >Chiapas</option>
+            <option >DF</option>
+        </select>
+        </div>
+    </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+    <label class="col-md-4 control-label">Codigo Postal</label>
+    <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <input name="codigoPostal" placeholder="Codigo Postal" class="form-control"  type="text">
+        </div>
+    </div>
+</div>
+
+
+<!-- Text area -->
+
+<div class="form-group">
+    <label class="col-md-4 control-label">Descripcion</label>
+    <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+            <textarea class="form-control" name="descripcion" placeholder="Descripcion"></textarea>
+        </div>
+    </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+    <label class="col-md-4 control-label"></label>
+    <div class="col-md-4">
+         <button type="submit" class="btn btn-warning" >Enviar <span class="glyphicon glyphicon-send"></span></button>
+    </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+</div><!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

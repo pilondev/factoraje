@@ -1,0 +1,135 @@
+#dataTables-example_filter{
+  float:right !important;
+}
+.pay-fact-ico, .delete-fact-ico, .edit-fact-ico{
+  font-size:23px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+.pay-fact-ico{
+  color:#27ae60;
+  cursor: pointer;
+}
+
+.delete-fact-ico{
+  color:#c0392b;
+  cursor: pointer;
+}
+
+.edit-fact-ico{
+  color:#34495e;
+  cursor: pointer;
+}
+
+.td-fact-ico{
+  text-align: center;
+}
+
+#actualizacion-factura-exitosa, #eliminar-factura-exitosa{
+  display:none;
+}
+
+.index-status{
+  padding-bottom:65px;
+  margin-top:-6%;
+  margin-left: 1%;
+}
+
+.index-status div{
+  padding:8px;
+}
+
+.badge-denegado,.badge-autorizado,.badge-pendiente{
+  padding:6px;
+}
+
+.badge-autorizado{
+  background:#5cb85c;
+}
+.badge-pendiente{
+  background:rgb(248,148,6);
+}
+.badge-denegado{
+  background:#d9534f;
+}
+.badge:empty {
+  display:inline-block!important;
+}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+
+#dataTables-example_filter{
+  float:right !important;
+}
+.detalle-comprador{
+  float:right;
+}
+
+.td-pagar-factura{
+  text-align: center;
+}
+
+.td-pagar-factura i{
+  color:green;
+  cursor:pointer;
+}
+
+.div-btn-pay,.div-btn-total{
+  padding:10px;
+}
+
+
+/* CSS for Credit Card Payment form */
+.credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+}
+.credit-card-box .form-control.error {
+    border-color: red;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+}
+.credit-card-box label.error {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box .payment-errors {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box label {
+    display: block;
+}
+/* The old "center div vertically" hack */
+.credit-card-box .display-table {
+    display: table;
+}
+.credit-card-box .display-tr {
+    display: table-row;
+}
+.credit-card-box .display-td {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+}
+/* Just looks nicer */
+.credit-card-box .panel-heading img {
+    min-width: 180px;
+}
+
+.btn-footer-pagar{
+  padding:10px;
+}
+
+
