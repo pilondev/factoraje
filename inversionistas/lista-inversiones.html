@@ -62,7 +62,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="index.html"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesion</a>
+                        <li><a href="../../index.html"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesion</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -158,6 +158,112 @@
           </div>
         </div>
 
+        <div class="modal fade bd-example-modal-sm" id="modal-pagar-factura" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pagar Factura</h5>
+
+                   </div>
+                  <div class="modal-body">
+                    <div class="row">
+                        <!-- You can make it whatever width you want. I'm making it full width
+                        on <= small devices and 4/12 page width on >= medium devices -->
+                        <div class="col-xs-12 col-md-3"></div>
+                        <div class="col-xs-12 col-md-6">
+
+                        <!-- CREDIT CARD FORM STARTS HERE -->
+                            <div class="panel panel-default credit-card-box">
+                            <div class="panel-heading display-table" >
+                                <div class="row display-tr" >
+                                    <h3 class="panel-title display-td" >Detalle de Pago</h3>
+                                    <div class="display-td" >
+                                        <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                            <form role="form" id="payment-form">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cardNumber">NUMERO DE TARJETA</label>
+                                            <div class="input-group">
+                                                <input
+                                                type="tel"
+                                                class="form-control"
+                                                name="cardNumber"
+                                                placeholder="Valid Card Number"
+                                                autocomplete="cc-number"
+                                                required autofocus
+                                                />
+                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-7 col-md-7">
+                                        <div class="form-group">
+                                        <label for="cardExpiry"><span class="hidden-xs">FECHA DE EXPIRACION</span><span class="visible-xs-inline">EXP</span></label>
+                                        <input
+                                        type="tel"
+                                        class="form-control"
+                                        name="cardExpiry"
+                                        placeholder="MM / YY"
+                                        autocomplete="cc-exp"
+                                        required
+                                        />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-5 col-md-5 pull-right">
+                                        <div class="form-group">
+                                            <label for="cardCVC">CODIGO CV</label>
+                                            <input
+                                            type="tel"
+                                            class="form-control"
+                                            name="cardCVC"
+                                            placeholder="CVC"
+                                            autocomplete="cc-csc"
+                                            required
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row btn-footer-pagar">
+                                    <div class="col-xs-12">
+                                        <div class="btn btn-primary btn-lg btn-block">Total <span class="badge badge-total"></span></div>
+                                    </div>
+                                </div>
+
+                                <div class="row btn-footer-pagar">
+                                    <div class="col-xs-12">
+                                        <button class="btn btn-success btn-lg btn-block" type="submit">Pagar</button>
+                                    </div>
+                                </div>
+                                <div class="row" style="display:none;">
+                                <div class="col-xs-12">
+                                    <p class="payment-errors"></p>
+                                </div>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    <!-- CREDIT CARD FORM ENDS HERE -->
+                    </div>
+                    <div class="col-xs-12 col-md-3"></div>
+                    </div>
+                 </div>
+
+                 <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="pagar-factura">Pagar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
 
         <div id="page-wrapper">
             <div class="row">
@@ -184,7 +290,8 @@
                                         <th>Fecha del pago (Factura) -  Mes/Dia/Año</th>
                                         <th>Fecha de la solicitud (Factura) -  Mes/Dia/Año</th>
                                         <th>Total Facturado</th>
-                                        <th>Status</th>
+                                        <th>Estado</th>
+                                        <th>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -194,9 +301,11 @@
                                         <td>Monitor Samsung 50 pulgadas</td>
                                         <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
-                                        <td>$100</td>
-                                        <td style="text-align: center"><span class="badge badge-autorizado"></td>
-
+                                        <td class="td-total-pagar">$<span class="span-total-pagar">200</span></td>
+                                        <td style="text-align: center"><span class="badge badge-pagado"></td>
+                                        <td class="td-pagar-factura">
+                                            <i class="fa fa-credit-card-alt pagar-factura" title="Pagar Factura" aria-hidden="true"></i>
+                                        </td>
                                     </tr>
                                     <tr class="even gradeC">
                                         <td>Digital Life</td>
@@ -204,8 +313,11 @@
                                         <td>Monitor Samsung 50 pulgadas</td>
                                         <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
-                                        <td>$300</td>
-                                        <td style="text-align: center"><span class="badge badge-denegado"></td>
+                                        <td class="td-total-pagar">$<span class="span-total-pagar">300</span></td>
+                                        <td style="text-align: center"><span class="badge badge-adquiridas"></td>
+                                        <td class="td-pagar-factura">
+                                            <i class="fa fa-credit-card-alt pagar-factura" title="Pagar Factura" aria-hidden="true"></i>
+                                        </td>
                                     </tr>
                                     <tr class="odd gradeX">
                                         <td>Digital Life</td>
@@ -213,9 +325,11 @@
                                         <td>Monitor Samsung 50 pulgadas</td>
                                         <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
                                         <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
-                                        <td>$100</td>
+                                        <td class="td-total-pagar">$<span class="span-total-pagar">100</span></td>
                                         <td style="text-align: center"><span class="badge badge-pendiente"></td>
-
+                                        <td class="td-pagar-factura">
+                                            <i class="fa fa-credit-card-alt pagar-factura" title="Pagar Factura" aria-hidden="true"></i>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -223,10 +337,10 @@
                         </div>
                         <!-- /.panel-body -->
                         <div class="index-status">
-                            <h5>Status de la factura</h5>
-                            <div></dir><span class="badge badge-autorizado"></span> Autorizado</div>
+                            <h5>Estado de la factura</h5>
+                            <div></dir><span class="badge badge-adquiridas"></span> Autorizado</div>
                             <div><span class="badge badge-pendiente"></span> Pendiente Autorizacion</div>
-                            <div><span class="badge badge-denegado"></span> Denegada</div>
+                            <div><span class="badge badge-pagado"></span> Denegada</div>
                         </div>
                         <div class="footer-btn">
                             <button class="btn btn-primary" id="adquirir-facturas">Adquirir Facturas</button>
@@ -258,7 +372,7 @@
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- DataTables JavaScript -->
-    <script src="assets/js/lista-mercados.js"></script>
+    <script src="assets/js/lista-inversiones.js"></script>
     <script src="assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="assets/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
     <script src="assets/vendor/datatables-responsive/dataTables.responsive.js"></script>

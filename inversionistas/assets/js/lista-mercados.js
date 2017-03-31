@@ -21,7 +21,4 @@ $(document).ready(function() {
         row.fadeOut(500);
     });
 
-    $("#adquirir-facturas").click(function(){
-        $("#autorizar-inversion-modal").modal("show");
-    });
 });

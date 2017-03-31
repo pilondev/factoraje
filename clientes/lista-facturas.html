@@ -62,7 +62,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="index.html"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesion</a>
+                        <li><a href="../../index.html"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesion</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -85,6 +85,30 @@
         </nav>
 
         <!-- Modal For Delete -->
+        <div class="modal fade bd-example-modal-sm" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Eliminar Factura</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                   </div>
+                  <div class="modal-body">
+                    <p>Estas seguro que deseas eliminar la factura selccionada ?</p>
+                 </div>
+                 <div class="alert alert-danger fade in" id="eliminar-factura-exitosa">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Eliminada!</strong> Tu factura se elimino correctamente.
+                </div>
+                 <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="eliminar-factura">Eliminar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
         <div class="modal fade bd-example-modal-sm" id="modal-pagar-factura" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -213,7 +237,7 @@
                                         <th>Factura</th>
                                         <th>Producto</th>
                                         <th>Fecha de Alta</th>
-                                        <th>Fecha de la solicitud (Factura) -  Mes/Dia/Año</th>
+                                        <th>Fecha de pago -  Mes/Dia/Año</th>
                                         <th>Total Facturado</th>
                                         <th>Accion</th>
                                     </tr>
@@ -222,28 +246,37 @@
                                     <tr class="odd gradeX">
                                         <td><a href="">imagen003.png</a></td>
                                         <td>Monitor Samsung 50 pulgadas</td>
-                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
-                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">02/19/2017</span></td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/26/2017</span></td>
                                         <td class="td-total-pagar">$<span class="span-total-pagar">200</span></td>
-                                        <td class="td-pagar-factura"><i class="fa fa-credit-card-alt pagar-factura" title="Pagar Factura" aria-hidden="true"></i></td>
+                                        <td class="td-pagar-factura">
+                                            <i class="fa fa-credit-card-alt pagar-factura" title="Pagar Factura" aria-hidden="true"></i>
+                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
+                                        </td>
 
                                     </tr>
                                    <tr class="odd gradeX">
                                         <td><a href="">imagen003.png</a></td>
-                                        <td>Monitor Samsung 50 pulgadas</td>
-                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
-                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
+                                        <td>Black Window Keyboard Mechanic</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">01/02/2017</span></td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/2017</span></td>
                                         <td class="td-total-pagar">$<span class="span-total-pagar">100</span></td>
-                                        <td class="td-pagar-factura"><i class="fa fa-credit-card-alt pagar-factura" title="Pagar Factura" aria-hidden="true"></i></td>
+                                        <td class="td-pagar-factura">
+                                            <i class="fa fa-credit-card-alt pagar-factura" title="Pagar Factura" aria-hidden="true"></i>
+                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
+                                        </td>
 
                                     </tr>
                                     <tr class="odd gradeX">
                                         <td><a href="">imagen003.png</a></td>
-                                        <td>Monitor Samsung 50 pulgadas</td>
-                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
-                                        <td class="td-fecha-pago-fact"><span class="date-editable">03/19/1990</span></td>
+                                        <td>Steel series gaming mouse xt23</td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">01/10/2017</span></td>
+                                        <td class="td-fecha-pago-fact"><span class="date-editable">02/14/2017</span></td>
                                         <td class="td-total-pagar">$<span class="span-total-pagar">300</span></td>
-                                        <td class="td-pagar-factura"><i class="fa fa-credit-card-alt pagar-factura" title="Pagar Factura" aria-hidden="true"></i></td>
+                                        <td class="td-pagar-factura">
+                                            <i class="fa fa-credit-card-alt pagar-factura" title="Pagar Factura" aria-hidden="true"></i>
+                                            <i class="fa fa-trash-o delete-fact-ico" title="Borrar Factura" aria-hidden="true"></i>
+                                        </td>
 
                                     </tr>
                                 </tbody>

@@ -14,4 +14,19 @@ $(document).ready(function() {
             $(".badge-total").text(badgeTotal);
 
     });
+
+       $("#eliminar-factura").click(function(){
+        var table = $("#dataTables-example");
+        $("#eliminar-factura-exitosa").slideDown();
+            setTimeout(function(){
+            $("#smallModal").modal("hide");
+            }, 3000)
+        var row = table.find("tr.deleted");
+        row.fadeOut(500);
+    });
+
+   $(".delete-fact-ico").click(function (){
+    $(this).parents('tr').addClass("deleted");
+    $("#smallModal").modal("show");
+    });
 });

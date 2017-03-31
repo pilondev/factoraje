@@ -74,11 +74,11 @@ color: #999;
 
 .td-pagar-factura{
   text-align: center;
+  cursor:pointer;
 }
 
-.td-pagar-factura i{
+.pagar-factura{
   color:green;
-  cursor:pointer;
 }
 
 .div-btn-pay,.div-btn-total{

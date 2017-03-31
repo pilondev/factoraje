@@ -40,3 +40,31 @@
   width: 150px;
   height: 40px;
 }
+.index-status{
+  padding-bottom:65px;
+  margin-top:-2%;
+  margin-left: 1%;
+}
+.index-status div{
+  padding:8px;
+}
+
+.badge-cargada,.badge-pagada,.badge-mercado-factoraje,.badge-pendiente{
+  padding:6px;
+}
+
+.badge-pagada{
+  background:#5cb85c;
+}
+.badge-cargada{
+  background:#428bca;
+}
+.badge-mercado-factoraje{
+
+}
+.badge-pendiente{
+  background:rgb(248,148,6);
+}
+.badge:empty {
+  display:inline-block!important;
+}
